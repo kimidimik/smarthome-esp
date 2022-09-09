@@ -9,6 +9,8 @@ const engl = 'Факин бич инглишь!';
 const russ = 'Йобаний кацап. Слава Україні!';
 //if (ctx.message.from.language_code == ru) {languser = russ} else if (ctx.message.from.language_code == en) {languser = engl}
 bot.start((ctx) => ctx.reply(`Саламчик, ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`));
+
+
 bot.hears(text, (ctx) => ctx.reply('Fuck you bitch!'));
 bot.help((ctx) => ctx.reply('Send me a sticker'));
 //bot.on('sticker', (ctx) => ctx.reply('👍'));
