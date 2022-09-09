@@ -5,10 +5,18 @@ require('dotenv').config();
 const bot = new Telegraf(process.env.BOT_TOKEN);
 //bot.start((ctx) => console.log(ctx.message));
 let languser;
-const engl = 'Факин бич инглишь!';
-const russ = 'Йобаний кацап. Слава Україні!';
-//if (ctx.message.from.language_code == ru) {languser = russ} else if (ctx.message.from.language_code == en) {languser = engl}
-bot.start((ctx) => ctx.reply(`Саламчик, ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`));
+
+bot.start((ctx) => { // так мы сделали полноценную функцию с телом
+  let message = ''
+
+  if (ctx.message.from.language_code == 'ru') {
+    message = 'Йобаний кацап. Слава Україні!';  
+  } else {
+    message = 'Факин бич инглишь!';
+  }
+  // ctx.reply(`Саламчик, ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`);
+  ctx.reply(`${message} ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`);
+})
 
 
 bot.hears(text, (ctx) => ctx.reply('Fuck you bitch!'));
