@@ -15,7 +15,7 @@ bot.start((ctx) => { // так мы сделали полноценную фун
     message = 'Факин бич инглишь!';
   }
   // ctx.reply(`Саламчик, ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`);
-  ctx.reply(`${message} ${ctx.message.from.first_name + " " + ctx.message.from.last_name}!`);
+  ctx.reply(`Привет ${ctx.message.from.first_name + " " + ctx.message.from.last_name}! ${message}`);
 })
 
 
