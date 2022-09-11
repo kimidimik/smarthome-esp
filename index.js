@@ -22,9 +22,9 @@ bot.hears(text, (ctx) => {
 
 bot.launch()
 
-const client = mqtt.connect('mqtt://158.101.192.8:1883', {
-  username: 'mqttusr',
-  password: 'awH6qM2yO7R4'
+const client = mqtt.connect(process.env.MQTT_HOST, {
+  username: process.env.MQTT_USER,
+  password: process.env.MQTT_PASS
 })
 
 client.on('connect', function () {
