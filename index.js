@@ -7,7 +7,7 @@ let lastData = null
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => {
-  ctx.reply(`Привіт, ${ctx.message.from.first_name}!`)
+  ctx.reply(`Привіт, ${ctx.message.from.first_name}! Я бот який допоможе тобі керувати розумним будинком. Поки що переглянь список можливостей /help`)
 })
 bot.command('microclimat', (ctx) => {
   if (lastData) {
@@ -20,7 +20,7 @@ bot.command('microclimat', (ctx) => {
 
 bot.help((ctx) => ctx.reply('Відправ команду /microclimat для отримання даних'))
 
-bot.hears(text, (ctx) => ('Якщо хочеш поспілкуватись, відкрий pornhub.com і все пройде!'))
+bot.hears(text, (ctx) => ctx.reply('Я не розумію тебе, переглянь, будь ласка /help'))
 
 bot.launch()
 
