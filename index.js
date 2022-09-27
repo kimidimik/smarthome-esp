@@ -1,9 +1,17 @@
 const mqtt = require('mqtt')
 const { text } = require('stream/consumers')
 const { Telegraf } = require('telegraf')
+const mongoose = require('mongoose')
+const User = require('./User')
 require('dotenv').config()
 
 let lastData = null
+
+const user = new User({
+  id: 1,
+  name: 'Kim'
+})
+user.save().then(() => console.log('User saved'))
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => {
@@ -53,3 +61,8 @@ process.once('SIGTERM', () => {
   bot.stop('SIGTERM')
   client.end()
 })
+
+mongoose.connect('mongodb://localhost:27017/smarthome')
+  .then(() => {
+    console.log('MongoDB connected! Nice, SmartHome is future!')
+  })
