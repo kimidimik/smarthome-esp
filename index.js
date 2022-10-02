@@ -36,7 +36,7 @@ bot.command('registration', (ctx) => {
   ctx.reply("Я тебе зберіг у своїй пам'яті!")
 })
 
-bot.help((ctx) => ctx.reply('Відправ команду /microclimat для отримання даних.' + ' ' + 'Для регестрації відправ команду /registration'))
+bot.help((ctx) => ctx.reply('Відправ команду /microclimat для отримання даних.\n' + 'Для регестрації відправ команду /registration'))
 
 bot.hears(text, (ctx) => ctx.reply('Я не розумію тебе, переглянь, будь ласка /help'))
 
