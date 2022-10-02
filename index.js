@@ -7,15 +7,16 @@ require('dotenv').config()
 
 let lastData = null
 
-const user = new User({
-  id: 1,
-  name: 'Kim'
-})
-user.save().then(() => console.log('User saved'))
+// const user = new User({
+//   id: 1,
+//   name: 'Kim'
+// })
+// user.save().then(() => console.log('User saved'))
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => {
   ctx.reply(`Привіт, ${ctx.message.from.first_name}! Я бот який допоможе тобі керувати розумним будинком. Поки що переглянь список можливостей /help`)
+  console.log(ctx)
 })
 bot.command('microclimat', (ctx) => {
   if (lastData) {
@@ -26,7 +27,16 @@ bot.command('microclimat', (ctx) => {
   }
 })
 
-bot.help((ctx) => ctx.reply('Відправ команду /microclimat для отримання даних'))
+bot.command('registration', (ctx) => {
+  const user = new User({
+    id: ctx.message.from.id,
+    name: ctx.message.from.first_name
+  })
+  user.save().then(() => console.log('User saved'))
+  ctx.reply("Я тебе зберіг у своїй пам'яті!")
+})
+
+bot.help((ctx) => ctx.reply('Відправ команду /microclimat для отримання даних.' + ' ' + 'Для регестрації відправ команду /registration'))
 
 bot.hears(text, (ctx) => ctx.reply('Я не розумію тебе, переглянь, будь ласка /help'))
 
